@@ -1,16 +1,25 @@
-import './App.css'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
+import { Suspense, lazy, useState } from 'react'
+import './App.css'
+import { Store } from './components/Store'
 import { Todo } from './components/Todo'
-import { useState } from 'react'
+import { Posts } from './components/Posts'
 
-const [queryClient] = useState(() => new QueryClient())
+
 
 function App() {
+  const [queryClient] = useState(() => new QueryClient())
 
   return (
     <>
       <QueryClientProvider client={queryClient}>
-        <Todo />
+        <div className='grid grid-cols-2 gap-4'>
+          <Todo />
+          <Store />
+          <Posts />
+        </div>
+        <ReactQueryDevtools buttonPosition='bottom-left' initialIsOpen={false} />
       </QueryClientProvider>
     </>
   )
