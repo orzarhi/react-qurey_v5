@@ -8,7 +8,7 @@ type UserType = {
     name: string
 }
 
-export const Todo = () => {
+export const Users = () => {
     const [index, setIndex] = useState<number>(1)
     const [users, setUsers] = useState<UserType[]>([])
 
@@ -16,7 +16,7 @@ export const Todo = () => {
         queryKey: ['users'],
         queryFn: async () => {
             const res = await fetch('https://jsonplaceholder.typicode.com/users')
-            await wait(8000)
+            await wait(2000)
             const data = await res.json()
             setUsers(data)
 
@@ -26,13 +26,13 @@ export const Todo = () => {
 
     const { isPending, variables, mutate, } = useMutation({
         mutationFn: async (user: UserType) => {
-            // await wait(8000)
+            await wait(3000)
             setUsers([...users, user])
             setIndex(index + 1)
         }
     })
 
-    if (isLoading) return <div className='text-purple-700'>Loading...</div>
+    if (isLoading) return <div className='text-purple-500'>Loading...</div>
 
 
     return (
