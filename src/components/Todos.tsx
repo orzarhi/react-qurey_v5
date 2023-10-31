@@ -27,7 +27,7 @@ export const Todos = () => {
     const content = data?.pages.map((todos => todos.map((todo) => {
         return (
             <div key={todo.id}>
-                <h1 className='mt-10 border bg-slate-200 text-black rounded-lg h-8'>{todo.title}</h1>
+                <h1 className='mt-10 border bg-slate-200 text-black rounded-lg h-14'>{todo.title}</h1>
             </div>
         )
     })))
